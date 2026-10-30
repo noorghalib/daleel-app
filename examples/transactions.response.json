@@ -1,0 +1,33 @@
+{
+  "api_version": "1.0.0",
+  "count": 3,
+  "elapsed_ms": 122.65,
+  "model_id": "transactions-sha256:97f240e81e242989a8c30b9d127d685588545928276f07a783810ed1b1b0dd1a",
+  "predictions": [
+    {
+      "fraud_score": 0.001623089729184,
+      "prediction": "Normal",
+      "reason": "",
+      "record_id": "example-normal",
+      "rule_alert": false,
+      "rule_reasons": ""
+    },
+    {
+      "fraud_score": 0.999099858299782,
+      "prediction": "Anomaly",
+      "reason": "لا يتوفر تفسير سببي للنموذج؛ يلزم فحص المعاملة يدوياً.",
+      "record_id": "example-review",
+      "rule_alert": false,
+      "rule_reasons": ""
+    },
+    {
+      "fraud_score": 0.001623736890234,
+      "prediction": "Normal",
+      "reason": "",
+      "record_id": "example-unseen",
+      "rule_alert": false,
+      "rule_reasons": ""
+    }
+  ],
+  "request_id": "49cbd8ab-c1da-4f06-aa35-b8cb9bcbd093"
+}

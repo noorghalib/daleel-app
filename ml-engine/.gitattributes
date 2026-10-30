@@ -1,0 +1,3 @@
+# Preserve checksummed release bytes on every OS, including text line endings.
+* -text
+*.joblib binary

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daleel — Financial analysis</title>
+<style>
+body{font:16px system-ui,sans-serif;color:#16342e;background:#f3f6f4;margin:0;padding:40px 20px}main{max-width:1000px;margin:auto}header{margin-bottom:28px}h1{font-size:32px;margin-bottom:8px}p{line-height:1.6}section{background:white;border:1px solid #dce5df;border-radius:12px;padding:24px;margin:20px 0}label{display:block;font-weight:600;margin:18px 0 8px}input{box-sizing:border-box;width:100%;padding:12px;border:1px solid #adbeb5;border-radius:6px}button{margin-top:22px;padding:12px 22px;border:0;border-radius:6px;background:#16654e;color:white;font:inherit;cursor:pointer}button:disabled{opacity:.6;cursor:wait}.muted{color:#586c64;font-size:14px}.scroll{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:12px;border-bottom:1px solid #e1e8e4}#status{white-space:pre-wrap;overflow-wrap:anywhere}code{overflow-wrap:anywhere}.alert{color:#9c3d14;font-weight:600}
+</style>
+<style>select{box-sizing:border-box;width:100%;padding:12px;border:1px solid #adbeb5;border-radius:6px;background:white;font:inherit}#ledger-status{white-space:pre-wrap;overflow-wrap:anywhere}</style>
+<main>
+<header><h1>Daleel</h1><p>Analyze transactions or journal entries and save the results.</p></header>
+<section><h2>Analyze a CSV</h2>
+<p class="muted">Local developer preview. Enter the API token from your .env file. It stays in this page's memory and is not saved in browser storage. User login will be added later.</p>
+<form id="form">
+<label for="token">API token</label><input id="token" type="password" autocomplete="off" required spellcheck="false">
+<label for="file">Transaction CSV</label><input id="file" type="file" accept=".csv,text/csv" required>
+<p class="muted">UTF-8 CSV · Up to 10,000 rows · Total request limit 10 MiB. Every submission creates a new saved analysis.</p>
+<p class="muted">Try <code>ml-engine/examples/input/transactions.csv</code> inside your project folder.</p>
+<button id="submit">Analyze and save</button></form>
+<p id="status" role="status" aria-live="polite"></p></section>
+<section id="results" hidden><h2>Saved predictions</h2><p class="muted">Anomaly means review is needed. Scores are model outputs, not guaranteed fraud probabilities. Rule alerts are separate checks.</p><p id="summary"></p><div class="scroll"><table><thead><tr><th>Record</th><th>Prediction</th><th>Model score</th><th>Rule alert</th><th>Rule reasons</th></tr></thead><tbody id="rows"></tbody></table></div></section>
+<section><h2>Journal analysis</h2>
+<p>Choose all three CSVs from the same company and dataset. Each journal's lines must stay together.</p>
+<form id="ledger-form">
+<label for="ledger-token">API token</label><input id="ledger-token" type="password" autocomplete="off" required spellcheck="false">
+<label for="sector">Sector</label><select id="sector" required><option value="">Choose a sector</option value="energy">Energy</option><option value="healthcare">Healthcare</option><option value="luxurygoods">Luxury goods</option><option value="manufacturing">Manufacturing</option><option value="transport">Transport</option></select>
+<label for="headers-file">Journal headers CSV — ledger_headers.csv</label><input id="headers-file" type="file" accept=".csv,text/csv" required>
+<label for="lines-file">Journal lines CSV — ledger_lines.csv</label><input id="lines-file" type="file" accept=".csv,text/csv" required>
+<label for="accounts-file">Chart of accounts CSV — ledger_accounts.csv</label><input id="accounts-file" type="file" accept=".csv,text/csv" required>
+<p class="muted">Example files: ml-engine/examples/input/. Choose Energy for the supplied demonstration.</p>
+<p class="muted">Up to 1,000 journal headers, 10,000 lines and 10,000 accounts. Combined request limit: 10 MiB. Review selects the highest-scoring 1% of this upload, rounded up; three entries means one is selected. A review alert does not prove fraud.</p>
+<button id="ledger-submit">Analyze journals and save</button>
+</form><p id="ledger-status" role="status" aria-live="polite"></p></section>
+<section id="ledger-results" hidden><h2>Saved journal results</h2><p id="ledger-summary"></p><p class="muted">Higher anomaly scores mean more unusual entries, not a probability of fraud. Rule alerts are independent accounting checks.</p><div class="scroll"><table><thead><tr><th>Document</th><th>Sector</th><th>Anomaly score</th><th>Review</th><th>Rule alert</th><th>Reasons</th></tr></thead><tbody id="ledger-rows"></tbody></table></div></section>
+</main>
+<script>
+const form=document.querySelector('#form'), status=document.querySelector('#status'), button=document.querySelector('#submit');
+form.addEventListener('submit',async event=>{
+ event.preventDefault();button.disabled=true;document.querySelector('#results').hidden=true;
+ status.textContent='Analyzing your transactions…';
+ try{
+  const body=new FormData();body.append('file',document.querySelector('#file').files[0]);
+  const token=document.querySelector('#token').value.trim();
+  if(!/^[\x21-\x7e]{32,}$/.test(token))throw new Error('Paste only the API token value from .env, without quotes or the variable name.');
+  const response=await fetch('/analyses/transactions/upload',{method:'POST',headers:{Authorization:'Bearer '+token},body});
+  const contentType=response.headers.get('content-type')||'';
+  if(!contentType.includes('application/json'))throw new Error('Server returned HTTP '+response.status+'. Check the file size and server terminal.');
+  const data=await response.json();
+  if(!response.ok)throw new Error(data.error?.message||'Request failed (HTTP '+response.status+')');
+  document.querySelector('#summary').textContent=data.count+' transactions saved. Analysis ID: '+data.analysis_id;
+  const rows=document.querySelector('#rows');rows.replaceChildren();
+  for(const item of data.predictions){const row=document.createElement('tr');for(const value of [item.record_id,item.prediction,Number(item.fraud_score).toFixed(6),item.rule_alert?'Yes':'No',item.rule_reasons||'—']){const cell=document.createElement('td');cell.textContent=value;row.append(cell);}if(item.prediction==='Anomaly')row.className='alert';rows.append(row);}
+  document.querySelector('#results').hidden=false;status.textContent='Analysis completed and saved to PostgreSQL.';
+ }catch(error){status.textContent=error.message+' If the connection failed, check saved analyses before submitting again.';}
+ finally{button.disabled=false;}
+});
+</script>
+<script>
+document.querySelector('#ledger-form').addEventListener('submit',async event=>{
+ event.preventDefault();
+ const button=document.querySelector('#ledger-submit'), status=document.querySelector('#ledger-status');
+ button.disabled=true;document.querySelector('#ledger-results').hidden=true;status.textContent='Analyzing your journal entries…';
+ try{
+  const token=document.querySelector('#ledger-token').value.trim();
+  if(!/^[\x21-\x7e]{32,}$/.test(token))throw new Error('Paste only the API token value from .env, without quotes or the variable name.');
+  const body=new FormData();body.append('sector',document.querySelector('#sector').value);
+  for(const [field,id] of [['headers','headers-file'],['lines','lines-file'],['chart_of_accounts','accounts-file']])body.append(field,document.getElementById(id).files[0]);
+  const response=await fetch('/analyses/ledger/upload',{method:'POST',headers:{Authorization:'Bearer '+token},body});
+  if(!(response.headers.get('content-type')||'').includes('application/json'))throw new Error('Server returned HTTP '+response.status+'. Check the combined file size and server terminal.');
+  const data=await response.json();if(!response.ok)throw new Error(data.error?.message||'Request failed (HTTP '+response.status+')');
+  document.querySelector('#ledger-summary').textContent=data.count+' journal entries saved. Analysis ID: '+data.analysis_id;
+  const rows=document.querySelector('#ledger-rows');rows.replaceChildren();
+  for(const item of data.predictions){const row=document.createElement('tr');for(const value of [item.document_id,item.sector,Number(item.anomaly_score).toFixed(6),item.review_alert?'Yes':'No',item.rule_alert?'Yes':'No',item.rule_reasons||'—']){const cell=document.createElement('td');cell.textContent=value;row.append(cell);}if(item.review_alert||item.rule_alert)row.className='alert';rows.append(row);}
+  document.querySelector('#ledger-results').hidden=false;status.textContent='Journal analysis completed and saved to PostgreSQL.';
+ }catch(error){status.textContent=error.message+' If the connection failed, check saved analyses before submitting again.';}
+ finally{button.disabled=false;}
+});
+</script>
+</html>

@@ -1,0 +1,20 @@
+name: Tests
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - run: python -m pip check
+      - run: python -m unittest discover -s tests -v
+      - run: python -m unittest test_backend_storage -v
+      - run: python -m unittest discover -s ml-engine/tests -p 'test_*ml*.py' -v
+      - run: node --check frontend/app.js && node --check frontend/workspace.js && node --check frontend/integration.js
+      - run: docker build -t daleel:test .

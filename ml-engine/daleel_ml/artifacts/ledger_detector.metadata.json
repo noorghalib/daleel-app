@@ -1,0 +1,57 @@
+{
+  "task": "unsupervised document anomaly ranking",
+  "source_dataset": "WaguyMZ/ForensicBench",
+  "revision": "9c259ac178a9aeddf4a1ea509cf526bbccb5c04a",
+  "sectors": [
+    "energy",
+    "healthcare",
+    "luxurygoods",
+    "manufacturing",
+    "transport"
+  ],
+  "random_state": 20261025,
+  "numeric_features": [
+    "total_debit",
+    "total_credit",
+    "net_local",
+    "line_count",
+    "max_line_amount",
+    "mean_line_amount",
+    "unique_accounts",
+    "unique_parties",
+    "balance_gap",
+    "relative_balance_gap",
+    "round_amount",
+    "posting_lag_days",
+    "posting_weekday",
+    "posting_month",
+    "missing_lines",
+    "unknown_account_ratio",
+    "asset_ratio",
+    "liability_ratio",
+    "equity_ratio",
+    "tiers_ratio",
+    "expense_ratio",
+    "revenue_ratio",
+    "special_ratio",
+    "duplicate_line_key_count"
+  ],
+  "frequency_features": [
+    "document_type",
+    "source",
+    "business_process",
+    "account_pattern"
+  ],
+  "review_policy": "Top ceil(n * review_fraction) per sector batch; default .01; None uses validation threshold",
+  "score_semantics": "Negative IsolationForest score_samples; higher means more unusual, not fraud probability",
+  "versions": {
+    "numpy": "2.5.4",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.9.1",
+    "joblib": "1.6.0",
+    "pyarrow": "26.0.0",
+    "xgboost": "3.4.1",
+    "threadpoolctl": "3.7.0"
+  },
+  "labels_available": false
+}

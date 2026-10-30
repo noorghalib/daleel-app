@@ -1,0 +1,44 @@
+{
+  "task": "binary financial transaction fraud classification",
+  "target": "isFraud",
+  "selected_model": "hist_gradient_boosting",
+  "family": "hist_gradient_boosting",
+  "threshold": 0.9979613474786576,
+  "random_state": 20261025,
+  "feature_columns": [
+    "step",
+    "amount",
+    "oldbalanceOrg",
+    "newbalanceOrig",
+    "oldbalanceDest",
+    "newbalanceDest",
+    "origin_balance_gap",
+    "destination_balance_gap",
+    "origin_balance_check_applicable",
+    "destination_balance_check_applicable",
+    "amount_to_origin_balance_ratio",
+    "type"
+  ],
+  "excluded_columns": [
+    "isFraud",
+    "isFlaggedFraud",
+    "nameOrig",
+    "nameDest",
+    "record_id"
+  ],
+  "source_dataset": "RegularGuyOIO/financial-transaction-fraud-dataset",
+  "revision": "0af54eb7e70f642a416d4022b03a2cb360efbd69",
+  "versions": {
+    "numpy": "2.5.4",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.9.1",
+    "joblib": "1.6.0",
+    "pyarrow": "26.0.0",
+    "xgboost": "3.4.1",
+    "threadpoolctl": "3.7.0"
+  },
+  "parameters": {},
+  "score_semantics": "Raw predict_proba score; not calibrated confidence",
+  "selection": "Validation F1, precision, then shorter validation prediction time; no post-selection refit",
+  "numeric_storage": "float32 after original-precision feature derivation"
+}

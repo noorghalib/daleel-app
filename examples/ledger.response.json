@@ -1,0 +1,37 @@
+{
+  "api_version": "1.0.0",
+  "count": 3,
+  "elapsed_ms": 101.707,
+  "model_id": "ledger-sha256:eebd36fec7c5f2acf83fbe2b0f27508af59d7316a5ff138c6b35c0f9610fca87",
+  "predictions": [
+    {
+      "anomaly_score": 0.641886557678925,
+      "document_id": "demo-001",
+      "review_alert": false,
+      "rule_alert": false,
+      "rule_reasons": "",
+      "sector": "energy"
+    },
+    {
+      "anomaly_score": 0.582078502342555,
+      "document_id": "demo-002",
+      "review_alert": false,
+      "rule_alert": false,
+      "rule_reasons": "",
+      "sector": "energy"
+    },
+    {
+      "anomaly_score": 0.662282623999392,
+      "document_id": "demo-003",
+      "review_alert": true,
+      "rule_alert": true,
+      "rule_reasons": "debits and credits do not balance",
+      "sector": "energy"
+    }
+  ],
+  "request_id": "43b43961-500a-42b8-bf30-95437801285d",
+  "review_policy": {
+    "mode": "batch_top_fraction",
+    "review_fraction": 0.01
+  }
+}

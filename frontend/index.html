@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101828">
+  <meta name="description" content="واجهة دليل لتحليل المعاملات المالية ومراجعة القيود المحاسبية.">
+  <title>دليل — التحليل والمراجعة المالية</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/IBMPlexSansArabic-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+  <script src="workspace.js" defer></script>
+  <script src="integration.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">انتقل إلى المحتوى</a>
+  <div class="mobile-scrim" id="mobile-scrim"></div>
+  <aside class="sidebar" aria-label="التنقل الرئيسي">
+    <a class="brand" href="#overview" aria-label="دليل الرئيسية">
+      <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M9 8h10c9 0 14 5 14 12s-5 12-14 12H9V20h10" stroke="currentColor" stroke-width="3.5" stroke-linecap="square"/><path d="M9 8v7m0 10v7" stroke="#17BEBB" stroke-width="3.5"/><circle cx="20" cy="20" r="3" fill="#17BEBB"/></svg>
+      <span class="brand-word" dir="ltr">daleel</span>
+    </a>
+    <button class="workspace-switch" id="workspace-switch" aria-label="معلومات مساحة العمل">
+      <span class="workspace-icon" data-icon="building"></span>
+      <span><strong id="sidebar-company">مساحة العمل</strong><small>إعدادات مساحة العمل</small></span>
+      <span data-icon="chevrons" class="tiny"></span>
+    </button>
+    <div class="nav-caption">مساحة العمل</div>
+    <nav id="nav">
+      <a href="#overview" data-route="overview"><span data-icon="grid"></span><span>نظرة عامة</span></a>
+      <a href="#transactions" data-route="transactions"><span data-icon="arrows"></span><span>المعاملات المالية</span></a>
+      <a href="#ledger" data-route="ledger"><span data-icon="book"></span><span>القيود المحاسبية</span></a>
+      <a href="#review" data-route="review"><span data-icon="scan"></span><span>قائمة المراجعة</span><b class="nav-count" id="review-count" hidden></b></a>
+      <a href="#files" data-route="files"><span data-icon="folder"></span><span>الملفات والتحليلات</span></a>
+      <a href="#reports" data-route="reports"><span data-icon="chart"></span><span>التقارير</span></a>
+    </nav>
+    <div class="nav-caption secondary-caption">الإدارة</div>
+    <nav>
+      <a href="#models" data-route="models"><span data-icon="cpu"></span><span>نماذج الذكاء الاصطناعي</span></a>
+      <a href="#settings" data-route="settings"><span data-icon="settings"></span><span>الإعدادات</span></a>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="private-card"><span data-icon="shield"></span><div><strong>بياناتك، في مساحتك.</strong><p>التحليل والمراجعة في مكان واحد</p></div><span class="private-dot"></span></div>
+      <button class="help-button" id="help-button"><span data-icon="help"></span><span>المساعدة ودليل الاستخدام</span><span data-icon="external" class="tiny"></span></button>
+      <div class="sidebar-foot"><span>DALEEL WORKSPACE</span><span>v1.0</span></div>
+    </div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar">
+      <div class="breadcrumb"><button class="icon-button mobile-toggle" id="mobile-toggle" aria-label="فتح القائمة"><span data-icon="menu"></span></button><span class="breadcrumb-home" data-icon="home"></span><span class="crumb-separator">/</span><span id="breadcrumb-name">نظرة عامة</span></div>
+      <div class="global-search"><span data-icon="search"></span><input id="global-search" aria-label="البحث في المعاملات" placeholder="ابحث عن معاملة أو رقم مرجعي..." autocomplete="off"><kbd dir="ltr">⌘ K</kbd></div>
+      <div class="topbar-actions"><span class="connection-indicator" id="connection-indicator"><i></i><span>غير متصل</span></span><span class="top-divider"></span><div class="notification-anchor"><button class="icon-button notification-button" id="notifications-button" aria-label="عرض الإشعارات" aria-expanded="false"><span data-icon="bell"></span></button><div class="popover notifications" id="notifications" hidden><div class="popover-heading">الإشعارات</div><div id="notification-content"><p class="muted">لم يتم تحميل الإشعارات بعد.</p></div></div></div><button class="avatar" id="profile-button" aria-label="فتح إعدادات الحساب"><span data-icon="building"></span></button></div>
+    </header>
+    <main id="main" tabindex="-1"></main>
+    <footer class="page-footer"><span id="copyright"></span><span>دليل — التحليل والمراجعة المالية</span></footer>
+  </div>
+  <div class="overlay" id="modal-overlay" hidden></div>
+  <section class="dialog" id="dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title" hidden></section>
+  <div class="toast-region" id="toast-region" role="status" aria-live="polite"></div>
+</body>
+</html>

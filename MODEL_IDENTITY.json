@@ -1,0 +1,23 @@
+{
+  "release": "daleel-backend-1.0.0",
+  "artifacts": {
+    "fraud_detector.joblib": "97f240e81e242989a8c30b9d127d685588545928276f07a783810ed1b1b0dd1a",
+    "fraud_detector.metadata.json": "07e7ced1c971286f7c817fb16c083efa2fd4d772769f7e1987d2b1ea17fa6941",
+    "ledger_detector.joblib": "eebd36fec7c5f2acf83fbe2b0f27508af59d7316a5ff138c6b35c0f9610fca87",
+    "ledger_detector.metadata.json": "36cf11d4bea7f6630fce29c204e9dd75989ad6e29daaa69cc22484f43d76e51c"
+  },
+  "model_ids": {
+    "transactions": "transactions-sha256:97f240e81e242989a8c30b9d127d685588545928276f07a783810ed1b1b0dd1a",
+    "ledger": "ledger-sha256:eebd36fec7c5f2acf83fbe2b0f27508af59d7316a5ff138c6b35c0f9610fca87"
+  },
+  "transaction_threshold": 0.9979613474786576,
+  "sectors": [
+    "energy",
+    "healthcare",
+    "luxurygoods",
+    "manufacturing",
+    "transport"
+  ],
+  "transaction_score": "Uncalibrated predict_proba; not guaranteed fraud probability",
+  "ledger_score": "Negative IsolationForest score_samples; higher is more unusual, not fraud probability"
+}

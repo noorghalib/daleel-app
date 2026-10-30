@@ -1,0 +1,4 @@
+record_id,step,type,amount,oldbalanceOrg,newbalanceOrig,oldbalanceDest,newbalanceDest
+example-normal,10,PAYMENT,100,500,400,0,0
+example-review,11,TRANSFER,10000,10000,0,500,500
+example-unseen,12,NEW_TRANSACTION_TYPE,125,1000,875,250,375

@@ -1,0 +1,231 @@
+{
+  "transactions": {
+    "dataset": "RegularGuyOIO/financial-transaction-fraud-dataset",
+    "revision": "0af54eb7e70f642a416d4022b03a2cb360efbd69",
+    "files": [
+      {
+        "path": "transactions/Fraud.csv",
+        "remote_path": "Fraud.csv",
+        "bytes": 493534783,
+        "sha256": "16910f90577b0d981bf8ff289714510bb89bc71bff7d3f220f024e287e4eea6b",
+        "rows": 6362620
+      }
+    ]
+  },
+  "forensic": {
+    "dataset": "WaguyMZ/ForensicBench",
+    "revision": "9c259ac178a9aeddf4a1ea509cf526bbccb5c04a",
+    "files": [
+      {
+        "path": "forensic/energy/chart_of_accounts.parquet",
+        "remote_path": "data/energy/chart_of_accounts.parquet",
+        "bytes": 20948,
+        "sha256": "4144d0636142d07fd3a45c3617a16f16763a298dfbda7a7b61ee507a177e17cb",
+        "rows": 1010
+      },
+      {
+        "path": "forensic/energy/customers.parquet",
+        "remote_path": "data/energy/customers.parquet",
+        "bytes": 10348,
+        "sha256": "b117fbda1c30951ce28bb9309df5ce279e8aaf435def5ea581439588d4e1e0f7",
+        "rows": 30
+      },
+      {
+        "path": "forensic/energy/employees.parquet",
+        "remote_path": "data/energy/employees.parquet",
+        "bytes": 16727,
+        "sha256": "611242c99ce87bf32f8e06df19ae40fcf233bf238f48f6b80d5a73881393608e",
+        "rows": 72
+      },
+      {
+        "path": "forensic/energy/je_header.parquet",
+        "remote_path": "data/energy/je_header.parquet",
+        "bytes": 7526689,
+        "sha256": "74129bd4aba8fe8bfc372cec2ba1104c06cb38834df6c6b47bb804130a4db1df",
+        "rows": 301430
+      },
+      {
+        "path": "forensic/energy/je_line.parquet",
+        "remote_path": "data/energy/je_line.parquet",
+        "bytes": 14503157,
+        "sha256": "4f43c429226975ca2ea6b5aec84f70fbfc1be57023996387a51592fe2bc26916",
+        "rows": 603514
+      },
+      {
+        "path": "forensic/energy/vendors.parquet",
+        "remote_path": "data/energy/vendors.parquet",
+        "bytes": 11176,
+        "sha256": "2c80ac46281c2c39f732f1a34c8f49a68c9ab83454ea137e7725a51b8c5b1a0e",
+        "rows": 23
+      },
+      {
+        "path": "forensic/healthcare/chart_of_accounts.parquet",
+        "remote_path": "data/healthcare/chart_of_accounts.parquet",
+        "bytes": 20948,
+        "sha256": "4144d0636142d07fd3a45c3617a16f16763a298dfbda7a7b61ee507a177e17cb",
+        "rows": 1010
+      },
+      {
+        "path": "forensic/healthcare/customers.parquet",
+        "remote_path": "data/healthcare/customers.parquet",
+        "bytes": 10304,
+        "sha256": "0b76c4f02fd95745e7a82fb60e84b758ec3051be1cb100308b16e819f2290ee0",
+        "rows": 30
+      },
+      {
+        "path": "forensic/healthcare/employees.parquet",
+        "remote_path": "data/healthcare/employees.parquet",
+        "bytes": 16633,
+        "sha256": "b4cc9ebf77a2ceef4e7111429db83c17df52e8f287c8e1f77b320965ac5277eb",
+        "rows": 70
+      },
+      {
+        "path": "forensic/healthcare/je_header.parquet",
+        "remote_path": "data/healthcare/je_header.parquet",
+        "bytes": 7518193,
+        "sha256": "869ddeb345e54669cf062168d3895eba4704540a618f7a55d92e672288e8adbd",
+        "rows": 301508
+      },
+      {
+        "path": "forensic/healthcare/je_line.parquet",
+        "remote_path": "data/healthcare/je_line.parquet",
+        "bytes": 14363031,
+        "sha256": "7ae88fdb1867ef5752743f8d4e9e8361cf980f456a19f216be6734bcbbe0eadf",
+        "rows": 603705
+      },
+      {
+        "path": "forensic/healthcare/vendors.parquet",
+        "remote_path": "data/healthcare/vendors.parquet",
+        "bytes": 11168,
+        "sha256": "7f2d198f3d856eeeebd5f00c4ef0609f47ecdea44eb3f1199f535a82c865af41",
+        "rows": 23
+      },
+      {
+        "path": "forensic/luxurygoods/chart_of_accounts.parquet",
+        "remote_path": "data/luxurygoods/chart_of_accounts.parquet",
+        "bytes": 20948,
+        "sha256": "4144d0636142d07fd3a45c3617a16f16763a298dfbda7a7b61ee507a177e17cb",
+        "rows": 1010
+      },
+      {
+        "path": "forensic/luxurygoods/customers.parquet",
+        "remote_path": "data/luxurygoods/customers.parquet",
+        "bytes": 10330,
+        "sha256": "67a0f1c3d2b0d2716d4c5e6b77677f4f6f34134686c45fc4491f6fd1a09e84ce",
+        "rows": 30
+      },
+      {
+        "path": "forensic/luxurygoods/employees.parquet",
+        "remote_path": "data/luxurygoods/employees.parquet",
+        "bytes": 16524,
+        "sha256": "ac29231aebddd44a414f81b11269ff91247f3081250d5c8a57409366cff14f86",
+        "rows": 68
+      },
+      {
+        "path": "forensic/luxurygoods/je_header.parquet",
+        "remote_path": "data/luxurygoods/je_header.parquet",
+        "bytes": 7505500,
+        "sha256": "6b56c5c1ca1b586b9549957a11ccfbe50781ae253f445d40108c5f6d76df4783",
+        "rows": 301088
+      },
+      {
+        "path": "forensic/luxurygoods/je_line.parquet",
+        "remote_path": "data/luxurygoods/je_line.parquet",
+        "bytes": 14552273,
+        "sha256": "3d2ce394af75f3aeb9eb03e188e4b880d99a350a9cdcac893474635fc0bf3092",
+        "rows": 602583
+      },
+      {
+        "path": "forensic/luxurygoods/vendors.parquet",
+        "remote_path": "data/luxurygoods/vendors.parquet",
+        "bytes": 11194,
+        "sha256": "51cad95e32f1ddc02c441ec7c93c1e9c2957aa8057aad0285b89255058868625",
+        "rows": 23
+      },
+      {
+        "path": "forensic/manufacturing/chart_of_accounts.parquet",
+        "remote_path": "data/manufacturing/chart_of_accounts.parquet",
+        "bytes": 20948,
+        "sha256": "4144d0636142d07fd3a45c3617a16f16763a298dfbda7a7b61ee507a177e17cb",
+        "rows": 1010
+      },
+      {
+        "path": "forensic/manufacturing/customers.parquet",
+        "remote_path": "data/manufacturing/customers.parquet",
+        "bytes": 10346,
+        "sha256": "c598624c33b17deaa3ebad0f4eb82e0d0eaeaaf3bfb00d2d05ae9339ffa7e5f4",
+        "rows": 30
+      },
+      {
+        "path": "forensic/manufacturing/employees.parquet",
+        "remote_path": "data/manufacturing/employees.parquet",
+        "bytes": 16693,
+        "sha256": "6eae47e5a855e0c94483631f7f246f8ba9b1c728553178860d4fa06f816553ac",
+        "rows": 72
+      },
+      {
+        "path": "forensic/manufacturing/je_header.parquet",
+        "remote_path": "data/manufacturing/je_header.parquet",
+        "bytes": 7616504,
+        "sha256": "15642d8ce3c7b5774ec0d21948a4a07f61f4115017d6645faeccaec1fbacc9b2",
+        "rows": 304773
+      },
+      {
+        "path": "forensic/manufacturing/je_line.parquet",
+        "remote_path": "data/manufacturing/je_line.parquet",
+        "bytes": 14102434,
+        "sha256": "c254c24c44f599ea83c729376470be962fb407f399bb0a21d33a6c4a08566d5e",
+        "rows": 610183
+      },
+      {
+        "path": "forensic/manufacturing/vendors.parquet",
+        "remote_path": "data/manufacturing/vendors.parquet",
+        "bytes": 11197,
+        "sha256": "167a8630f36e72c96a394d1e5d20aab624a5fe7ab92b81b77261ac2c4e43b1e8",
+        "rows": 23
+      },
+      {
+        "path": "forensic/transport/chart_of_accounts.parquet",
+        "remote_path": "data/transport/chart_of_accounts.parquet",
+        "bytes": 20948,
+        "sha256": "4144d0636142d07fd3a45c3617a16f16763a298dfbda7a7b61ee507a177e17cb",
+        "rows": 1010
+      },
+      {
+        "path": "forensic/transport/customers.parquet",
+        "remote_path": "data/transport/customers.parquet",
+        "bytes": 10342,
+        "sha256": "18448bea170e0d0218b1b619443cdd0fec4faacc713f9a8dcee0aaa07efd23a5",
+        "rows": 30
+      },
+      {
+        "path": "forensic/transport/employees.parquet",
+        "remote_path": "data/transport/employees.parquet",
+        "bytes": 16662,
+        "sha256": "66e4a5677f152e68f3f35eb627050f3a00d122366378804377ed00f88483c80b",
+        "rows": 70
+      },
+      {
+        "path": "forensic/transport/je_header.parquet",
+        "remote_path": "data/transport/je_header.parquet",
+        "bytes": 7535552,
+        "sha256": "59cc57d503ea1df86e56f9eb5b3b1ff5275b012af0647387737ef68507f25179",
+        "rows": 301197
+      },
+      {
+        "path": "forensic/transport/je_line.parquet",
+        "remote_path": "data/transport/je_line.parquet",
+        "bytes": 13910810,
+        "sha256": "3de9596e06fdad71188b2c93eda8d61fa9155b9a46125f553530ead4c4e7f4d7",
+        "rows": 602928
+      },
+      {
+        "path": "forensic/transport/vendors.parquet",
+        "remote_path": "data/transport/vendors.parquet",
+        "bytes": 11143,
+        "sha256": "c4a337e12b286b67942119c340b661ca3fcc432ca03d86ed7ee7800d586e5660",
+        "rows": 23
+      }
+    ]
+  }
+}

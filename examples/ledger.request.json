@@ -1,0 +1,104 @@
+{
+  "sector": "energy",
+  "review_fraction": 0.01,
+  "headers": [
+    {
+      "document_id": "demo-001",
+      "posting_date": "2025-01-01",
+      "document_date": "2025-01-01",
+      "document_type": "SA",
+      "source": "manual",
+      "business_process": "O2C"
+    },
+    {
+      "document_id": "demo-002",
+      "posting_date": "2025-01-02",
+      "document_date": "2025-01-02",
+      "document_type": "KR",
+      "source": "manual",
+      "business_process": "P2P"
+    },
+    {
+      "document_id": "demo-003",
+      "posting_date": "2025-01-03",
+      "document_date": "2025-01-01",
+      "document_type": "SA",
+      "source": "manual",
+      "business_process": "O2C"
+    }
+  ],
+  "lines": [
+    {
+      "document_id": "demo-001",
+      "line_number": 1,
+      "gl_account": "411000",
+      "debit_amount": 100.0,
+      "credit_amount": 0.0,
+      "local_amount": 100.0,
+      "auxiliary_account_number": "C-DEMO"
+    },
+    {
+      "document_id": "demo-001",
+      "line_number": 2,
+      "gl_account": "701000",
+      "debit_amount": 0.0,
+      "credit_amount": 100.0,
+      "local_amount": -100.0,
+      "auxiliary_account_number": "C-DEMO"
+    },
+    {
+      "document_id": "demo-002",
+      "line_number": 1,
+      "gl_account": "601000",
+      "debit_amount": 200.0,
+      "credit_amount": 0.0,
+      "local_amount": 200.0,
+      "auxiliary_account_number": "V-DEMO"
+    },
+    {
+      "document_id": "demo-002",
+      "line_number": 2,
+      "gl_account": "401000",
+      "debit_amount": 0.0,
+      "credit_amount": 200.0,
+      "local_amount": -200.0,
+      "auxiliary_account_number": "V-DEMO"
+    },
+    {
+      "document_id": "demo-003",
+      "line_number": 1,
+      "gl_account": "411000",
+      "debit_amount": 900.0,
+      "credit_amount": 0.0,
+      "local_amount": 900.0,
+      "auxiliary_account_number": "C-DEMO"
+    },
+    {
+      "document_id": "demo-003",
+      "line_number": 2,
+      "gl_account": "701000",
+      "debit_amount": 0.0,
+      "credit_amount": 800.0,
+      "local_amount": -800.0,
+      "auxiliary_account_number": "C-DEMO"
+    }
+  ],
+  "chart_of_accounts": [
+    {
+      "account_number": "411000",
+      "account_type": "Tiers"
+    },
+    {
+      "account_number": "701000",
+      "account_type": "Revenue"
+    },
+    {
+      "account_number": "601000",
+      "account_type": "Expense"
+    },
+    {
+      "account_number": "401000",
+      "account_type": "Tiers"
+    }
+  ]
+}

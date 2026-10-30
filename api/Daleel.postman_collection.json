@@ -1,0 +1,111 @@
+{
+  "info": {
+    "name": "Daleel backend handoff",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{api_token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000"
+    },
+    {
+      "key": "api_token",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "auth": {
+          "type": "noauth"
+        },
+        "url": "{{base_url}}/health"
+      }
+    },
+    {
+      "name": "Models and limits",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/v1/models"
+      }
+    },
+    {
+      "name": "Predict transactions",
+      "request": {
+        "method": "POST",
+        "url": "{{base_url}}/v1/transactions/predict",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"transactions\": [\n    {\n      \"record_id\": \"example-normal\",\n      \"step\": 10,\n      \"type\": \"PAYMENT\",\n      \"amount\": 100.0,\n      \"oldbalanceOrg\": 500.0,\n      \"newbalanceOrig\": 400.0,\n      \"oldbalanceDest\": 0.0,\n      \"newbalanceDest\": 0.0\n    },\n    {\n      \"record_id\": \"example-review\",\n      \"step\": 11,\n      \"type\": \"TRANSFER\",\n      \"amount\": 10000.0,\n      \"oldbalanceOrg\": 10000.0,\n      \"newbalanceOrig\": 0.0,\n      \"oldbalanceDest\": 500.0,\n      \"newbalanceDest\": 500.0\n    },\n    {\n      \"record_id\": \"example-unseen\",\n      \"step\": 12,\n      \"type\": \"NEW_TRANSACTION_TYPE\",\n      \"amount\": 125.0,\n      \"oldbalanceOrg\": 1000.0,\n      \"newbalanceOrig\": 875.0,\n      \"oldbalanceDest\": 250.0,\n      \"newbalanceDest\": 375.0\n    }\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Predict ledger",
+      "request": {
+        "method": "POST",
+        "url": "{{base_url}}/v1/ledger/predict",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"sector\": \"energy\",\n  \"review_fraction\": 0.01,\n  \"headers\": [\n    {\n      \"document_id\": \"demo-001\",\n      \"posting_date\": \"2025-01-01\",\n      \"document_date\": \"2025-01-01\",\n      \"document_type\": \"SA\",\n      \"source\": \"manual\",\n      \"business_process\": \"O2C\"\n    },\n    {\n      \"document_id\": \"demo-002\",\n      \"posting_date\": \"2025-01-02\",\n      \"document_date\": \"2025-01-02\",\n      \"document_type\": \"KR\",\n      \"source\": \"manual\",\n      \"business_process\": \"P2P\"\n    },\n    {\n      \"document_id\": \"demo-003\",\n      \"posting_date\": \"2025-01-03\",\n      \"document_date\": \"2025-01-01\",\n      \"document_type\": \"SA\",\n      \"source\": \"manual\",\n      \"business_process\": \"O2C\"\n    }\n  ],\n  \"lines\": [\n    {\n      \"document_id\": \"demo-001\",\n      \"line_number\": 1,\n      \"gl_account\": \"411000\",\n      \"debit_amount\": 100.0,\n      \"credit_amount\": 0.0,\n      \"local_amount\": 100.0,\n      \"auxiliary_account_number\": \"C-DEMO\"\n    },\n    {\n      \"document_id\": \"demo-001\",\n      \"line_number\": 2,\n      \"gl_account\": \"701000\",\n      \"debit_amount\": 0.0,\n      \"credit_amount\": 100.0,\n      \"local_amount\": -100.0,\n      \"auxiliary_account_number\": \"C-DEMO\"\n    },\n    {\n      \"document_id\": \"demo-002\",\n      \"line_number\": 1,\n      \"gl_account\": \"601000\",\n      \"debit_amount\": 200.0,\n      \"credit_amount\": 0.0,\n      \"local_amount\": 200.0,\n      \"auxiliary_account_number\": \"V-DEMO\"\n    },\n    {\n      \"document_id\": \"demo-002\",\n      \"line_number\": 2,\n      \"gl_account\": \"401000\",\n      \"debit_amount\": 0.0,\n      \"credit_amount\": 200.0,\n      \"local_amount\": -200.0,\n      \"auxiliary_account_number\": \"V-DEMO\"\n    },\n    {\n      \"document_id\": \"demo-003\",\n      \"line_number\": 1,\n      \"gl_account\": \"411000\",\n      \"debit_amount\": 900.0,\n      \"credit_amount\": 0.0,\n      \"local_amount\": 900.0,\n      \"auxiliary_account_number\": \"C-DEMO\"\n    },\n    {\n      \"document_id\": \"demo-003\",\n      \"line_number\": 2,\n      \"gl_account\": \"701000\",\n      \"debit_amount\": 0.0,\n      \"credit_amount\": 800.0,\n      \"local_amount\": -800.0,\n      \"auxiliary_account_number\": \"C-DEMO\"\n    }\n  ],\n  \"chart_of_accounts\": [\n    {\n      \"account_number\": \"411000\",\n      \"account_type\": \"Tiers\"\n    },\n    {\n      \"account_number\": \"701000\",\n      \"account_type\": \"Revenue\"\n    },\n    {\n      \"account_number\": \"601000\",\n      \"account_type\": \"Expense\"\n    },\n    {\n      \"account_number\": \"401000\",\n      \"account_type\": \"Tiers\"\n    }\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Ledger fixed threshold",
+      "request": {
+        "method": "POST",
+        "url": "{{base_url}}/v1/ledger/predict",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"sector\": \"energy\",\n  \"review_fraction\": null,\n  \"headers\": [\n    {\n      \"document_id\": \"demo-001\",\n      \"posting_date\": \"2025-01-01\",\n      \"document_date\": \"2025-01-01\",\n      \"document_type\": \"SA\",\n      \"source\": \"manual\",\n      \"business_process\": \"O2C\"\n    },\n    {\n      \"document_id\": \"demo-002\",\n      \"posting_date\": \"2025-01-02\",\n      \"document_date\": \"2025-01-02\",\n      \"document_type\": \"KR\",\n      \"source\": \"manual\",\n      \"business_process\": \"P2P\"\n    },\n    {\n      \"document_id\": \"demo-003\",\n      \"posting_date\": \"2025-01-03\",\n      \"document_date\": \"2025-01-01\",\n      \"document_type\": \"SA\",\n      \"source\": \"manual\",\n      \"business_process\": \"O2C\"\n    }\n  ],\n  \"lines\": [\n    {\n      \"document_id\": \"demo-001\",\n      \"line_number\": 1,\n      \"gl_account\": \"411000\",\n      \"debit_amount\": 100.0,\n      \"credit_amount\": 0.0,\n      \"local_amount\": 100.0,\n      \"auxiliary_account_number\": \"C-DEMO\"\n    },\n    {\n      \"document_id\": \"demo-001\",\n      \"line_number\": 2,\n      \"gl_account\": \"701000\",\n      \"debit_amount\": 0.0,\n      \"credit_amount\": 100.0,\n      \"local_amount\": -100.0,\n      \"auxiliary_account_number\": \"C-DEMO\"\n    },\n    {\n      \"document_id\": \"demo-002\",\n      \"line_number\": 1,\n      \"gl_account\": \"601000\",\n      \"debit_amount\": 200.0,\n      \"credit_amount\": 0.0,\n      \"local_amount\": 200.0,\n      \"auxiliary_account_number\": \"V-DEMO\"\n    },\n    {\n      \"document_id\": \"demo-002\",\n      \"line_number\": 2,\n      \"gl_account\": \"401000\",\n      \"debit_amount\": 0.0,\n      \"credit_amount\": 200.0,\n      \"local_amount\": -200.0,\n      \"auxiliary_account_number\": \"V-DEMO\"\n    },\n    {\n      \"document_id\": \"demo-003\",\n      \"line_number\": 1,\n      \"gl_account\": \"411000\",\n      \"debit_amount\": 900.0,\n      \"credit_amount\": 0.0,\n      \"local_amount\": 900.0,\n      \"auxiliary_account_number\": \"C-DEMO\"\n    },\n    {\n      \"document_id\": \"demo-003\",\n      \"line_number\": 2,\n      \"gl_account\": \"701000\",\n      \"debit_amount\": 0.0,\n      \"credit_amount\": 800.0,\n      \"local_amount\": -800.0,\n      \"auxiliary_account_number\": \"C-DEMO\"\n    }\n  ],\n  \"chart_of_accounts\": [\n    {\n      \"account_number\": \"411000\",\n      \"account_type\": \"Tiers\"\n    },\n    {\n      \"account_number\": \"701000\",\n      \"account_type\": \"Revenue\"\n    },\n    {\n      \"account_number\": \"601000\",\n      \"account_type\": \"Expense\"\n    },\n    {\n      \"account_number\": \"401000\",\n      \"account_type\": \"Tiers\"\n    }\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

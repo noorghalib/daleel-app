@@ -1,0 +1,7 @@
+document_id,line_number,gl_account,debit_amount,credit_amount,local_amount,auxiliary_account_number
+demo-001,1,411000,100,0,100,C-DEMO
+demo-001,2,701000,0,100,-100,C-DEMO
+demo-002,1,601000,200,0,200,V-DEMO
+demo-002,2,401000,0,200,-200,V-DEMO
+demo-003,1,411000,900,0,900,C-DEMO
+demo-003,2,701000,0,800,-800,C-DEMO

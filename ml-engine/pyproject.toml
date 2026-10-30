@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "daleel-ml"
+version = "1.0.0"
+description = "Transaction fraud classification and independent ledger anomaly ranking"
+requires-python = ">=3.13"
+dependencies = [
+  "numpy==2.5.4", "pandas==2.3.3", "scikit-learn==1.9.1", "joblib==1.6.0",
+  "pyarrow==26.0.0", "requests==2.34.2", "psutil==7.2.2", "matplotlib==3.11.2",
+  "xgboost==3.4.1", "threadpoolctl==3.7.0"
+]
+
+[project.optional-dependencies]
+api = ["flask>=3,<4"]
+
+[project.scripts]
+daleel-ml = "daleel_ml.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["daleel_ml*"]
+
+[tool.setuptools.package-data]
+daleel_ml = ["artifacts/*.joblib", "artifacts/*.json"]

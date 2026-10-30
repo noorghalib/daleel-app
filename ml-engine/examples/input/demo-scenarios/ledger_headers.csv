@@ -1,0 +1,13 @@
+document_id,posting_date,document_date,document_type,source,business_process
+demo-balanced-01,2026-10-29,2026-10-28,SA,manual,O2C
+demo-balanced-02,2026-10-29,2026-10-28,SA,manual,O2C
+demo-large-balanced,2026-10-29,2026-10-28,SA,manual,O2C
+demo-unbalanced-01,2026-10-29,2026-10-28,SA,manual,O2C
+demo-unbalanced-02,2026-10-29,2026-10-28,SA,manual,O2C
+demo-unknown-account,2026-10-29,2026-10-28,SA,manual,O2C
+demo-duplicate-line,2026-10-29,2026-10-28,SA,manual,O2C
+demo-negative-debit,2026-10-29,2026-10-28,SA,manual,O2C
+demo-missing-amount,2026-10-29,2026-10-28,SA,manual,O2C
+demo-missing-lines,2026-10-29,2026-10-28,SA,manual,O2C
+demo-missing-document-date,2026-10-29,,SA,manual,O2C
+demo-delayed-posting,2026-10-29,2024-01-01,SA,manual,O2C

@@ -1,0 +1,4 @@
+document_id,posting_date,document_date,document_type,source,business_process
+demo-001,2025-01-01,2025-01-01,SA,manual,O2C
+demo-002,2025-01-02,2025-01-02,KR,manual,P2P
+demo-003,2025-01-03,2025-01-01,SA,manual,O2C
